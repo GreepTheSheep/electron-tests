@@ -1,0 +1,21 @@
+{
+  "name": "electron-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^10.1.0",
+    "electron-builder": "^22.8.0",
+    "nexe": "3.3.7"
+  },
+  "build": {
+    "appId": "greep.example.app"
+  }
+}
