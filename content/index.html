@@ -1,7 +1,18 @@
 <html>
     <head>
+        <script>
+            const { ipcRenderer } = require('electron')
+            function ipc(){
+                ipcRenderer.send('log-error', 'Introuvable ^^');
+            }
+
+            ipcRenderer.on('error-logged', (event, arg) => {
+                alert('Une erreur a été rencontrée. Consultez le terminal pour plus de détails.\n' + arg);
+            });
+        </script>
         <style>
             body {
+                /* -webkit-app-region: drag; */
                 background-color: black;
                 color: white;
             }
@@ -9,5 +20,7 @@
     </head>
     <body>
         yes!
+
+        <button onclick="ipc()">Bouton IPC</button>
     </body>
 </html>
