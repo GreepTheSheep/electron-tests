@@ -53,6 +53,12 @@ function createWindow () {
   // Open the DevTools.
   window.webContents.openDevTools()
 
+
+  ipcMain.on('log-error', (event, arg) => {
+    console.log('Erreur ! Veuillez rapporter ce bug au développeur de l\'application.\n' + arg);
+    event.sender.send('error-logged', arg);
+});
+
 }
 
 // This method will be called when Electron has finished
@@ -83,7 +89,3 @@ app.on('activate', () => {
 
 
 
-ipcMain.on('log-error', (event, arg) => {
-    console.log('Erreur ! Veuillez rapporter ce bug au développeur de l\'application.\n' + arg);
-    event.sender.send('error-logged', arg);
-});
