@@ -29,7 +29,7 @@ function createWindow () {
     const window = new BrowserWindow({
       icon: 'assets/zds.png',
       title: 'Greep',
-      // frame: false,
+      frame: false,
       transparent: true,
         webPreferences: {
             nodeIntegration: true
