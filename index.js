@@ -51,13 +51,31 @@ function createWindow () {
     //if (!window.isMaximized()) window.maximize()
 
   // Open the DevTools.
-  window.webContents.openDevTools()
+  //window.webContents.openDevTools()
 
 
   ipcMain.on('log-error', (event, arg) => {
     console.log('Erreur ! Veuillez rapporter ce bug au développeur de l\'application.\n' + arg);
     event.sender.send('error-logged', arg);
-});
+  });
+
+  ipcMain.on('closeWindow', (event, arg) => {
+    window.close();
+  });
+  ipcMain.on('minimizeWindow', (event, arg) => {
+    window.minimize();
+  });
+  var maximize = false
+  ipcMain.on('maximizeWindow', (event, arg) => {
+    if (maximize){
+      window.unmaximize()
+      maximize = false
+    } else{
+      window.maximize();
+      maximize = true
+    } 
+    //window.setFullScreen(!window.isFullScreen());
+  });
 
 }
 

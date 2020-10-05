@@ -1,14 +1,28 @@
 <html>
     <head>
         <script>
-            const { ipcRenderer } = require('electron')
+            const { ipcRenderer, remote } = require('electron')
+            var window = remote.getCurrentWindow()
+
             function ipc(){
-                ipcRenderer.send('log-error', 'Introuvable ^^');
+                ipcRenderer.send('log-error', 'ça marche yes :)');
+                ipcRenderer.on('error-logged', (event, arg) => {
+                    alert('Une erreur a été rencontrée. Consultez le terminal pour plus de détails.\n' + arg);
+                });
+            }
+            
+
+            function closeWindow () {
+                ipcRenderer.send('closeWindow');
             }
 
-            ipcRenderer.on('error-logged', (event, arg) => {
-                alert('Une erreur a été rencontrée. Consultez le terminal pour plus de détails.\n' + arg);
-            });
+            function minimizeWindow () {  
+                ipcRenderer.send('minimizeWindow');
+            }
+
+            function maximizeWindow () {
+                ipcRenderer.send('maximizeWindow');
+            }
         </script>
         <style>
             body {
@@ -27,6 +41,9 @@
         yes!
         <br />
         <button onclick="ipc()">Bouton IPC</button>
+        <button onclick="minimizeWindow()">Bouton reduire</button>
+        <button onclick="maximizeWindow()">Bouton fenetrer</button>
+        <button onclick="closeWindow()">Bouton fermer</button>
         <br />
         <br />
         <br />
