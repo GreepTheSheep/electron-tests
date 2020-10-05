@@ -8,7 +8,7 @@
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
   },
-  "author": "",
+  "author": "Greep",
   "license": "ISC",
   "devDependencies": {
     "electron": "^10.1.0",
@@ -16,6 +16,16 @@
     "nexe": "3.3.7"
   },
   "build": {
-    "appId": "greep.example.app"
+    "appId": "greep.example.app",
+    "productName" : "Greep tests Electron",
+    "win" : {
+      "target" : "msi"
+    },
+    "linux" : {
+      "target" : "apk"
+    },
+    "mac" : {
+      "target" : "dmg"
+    }
   }
 }
