@@ -30,7 +30,6 @@ function createWindow () {
       icon: 'assets/zds.png',
       title: 'Greep',
       frame: false,
-      transparent: true,
         webPreferences: {
             nodeIntegration: true
         },
@@ -65,15 +64,9 @@ function createWindow () {
   ipcMain.on('minimizeWindow', (event, arg) => {
     window.minimize();
   });
-  var maximize = false
   ipcMain.on('maximizeWindow', (event, arg) => {
-    if (maximize){
-      window.unmaximize()
-      maximize = false
-    } else{
-      window.maximize();
-      maximize = true
-    } 
+    if (window.isMaximized()) window.unmaximize()
+    else window.maximize()
     //window.setFullScreen(!window.isFullScreen());
   });
 
