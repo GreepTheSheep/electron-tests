@@ -1,54 +1,19 @@
 <html>
     <head>
-        <script>
-            const { ipcRenderer, remote } = require('electron')
-            var window = remote.getCurrentWindow()
-
-            function ipc(){
-                ipcRenderer.send('log-error', 'ça marche yes :)');
-            }
-            
-            ipcRenderer.on('error-logged', (event, arg) => {
-                alert('Une erreur a été rencontrée. Consultez le terminal pour plus de détails.\n' + arg);
-            });
-
-            function closeWindow () {
-                ipcRenderer.send('closeWindow');
-            }
-
-            function minimizeWindow () {  
-                ipcRenderer.send('minimizeWindow');
-            }
-
-            function maximizeWindow () {
-                ipcRenderer.send('maximizeWindow');
-            }
-        </script>
-        <style>
-            body {
-                
-                background-color: black;
-                color: white;
-            }
-            .div1{
-                -webkit-app-region: drag;
-                font-size: xx-large;
-                background-color: green;
-            }
-        </style>
+        <link rel="stylesheet" href="style.css">
+        <script src="render.js"></script>
     </head>
     <body>
-        yes!
-        <br />
-        <button onclick="ipc()">Bouton IPC</button>
+        <div class="div1">
+            Prend ceci c'est pour toi ^^
+        </div>
         <button onclick="minimizeWindow()">Bouton reduire</button>
         <button onclick="maximizeWindow()">Bouton fenetrer</button>
         <button onclick="closeWindow()">Bouton fermer</button>
         <br />
         <br />
         <br />
-        <div class="div1">
-            Prend ceci c'est pour toi ^^
-        </div>
+        <br />
+        <button onclick="ipc()">Bouton IPC</button>
     </body>
 </html>

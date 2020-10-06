@@ -1,0 +1,10 @@
+body {
+                
+    background-color: black;
+    color: white;
+}
+.div1{
+    -webkit-app-region: drag;
+    font-size: xx-large;
+    background-color: green;
+}
