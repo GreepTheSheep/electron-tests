@@ -27,7 +27,7 @@ const dockMenu = Menu.buildFromTemplate([
 function createWindow () {
   // Create the browser window.
     const window = new BrowserWindow({
-      icon: 'assets/zds.png',
+      icon: 'build/icon.png',
       title: 'Greep',
       frame: false,
         webPreferences: {
