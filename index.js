@@ -53,9 +53,9 @@ function createWindow () {
   //window.webContents.openDevTools()
 
 
-  ipcMain.on('log-error', (event, arg) => {
-    console.log('Erreur ! Veuillez rapporter ce bug au développeur de l\'application.\n' + arg);
-    event.sender.send('error-logged', arg);
+  ipcMain.on('log-ipc', (event, arg) => {
+    console.log(arg);
+    // event.sender.send('ipc-return', arg);
   });
 
   ipcMain.on('closeWindow', (event, arg) => {
@@ -67,7 +67,6 @@ function createWindow () {
   ipcMain.on('maximizeWindow', (event, arg) => {
     if (window.isMaximized()) window.unmaximize()
     else window.maximize()
-    //window.setFullScreen(!window.isFullScreen());
   });
 
 }

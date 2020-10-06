@@ -1,22 +1,24 @@
 const { ipcRenderer, remote } = require('electron')
 var window = remote.getCurrentWindow()
 
+// ipcRenderer.on('ipc-return', (event, arg) => {
+//     alert(arg);
+// });
+
 function ipc(){
-ipcRenderer.send('log-error', 'ça marche yes :)');
+    var data = document.getElementById("textInput").value;
+    if (!data) return alert('Enter data!')
+    ipcRenderer.send('log-ipc', data);
 }
 
-ipcRenderer.on('error-logged', (event, arg) => {
-alert('Une erreur a été rencontrée. Consultez le terminal pour plus de détails.\n' + arg);
-});
-
 function closeWindow () {
-ipcRenderer.send('closeWindow');
+    ipcRenderer.send('closeWindow');
 }
 
 function minimizeWindow () {  
-ipcRenderer.send('minimizeWindow');
+    ipcRenderer.send('minimizeWindow');
 }
 
 function maximizeWindow () {
-ipcRenderer.send('maximizeWindow');
+    ipcRenderer.send('maximizeWindow');
 }
