@@ -2,9 +2,9 @@
     <head>
         <link rel="stylesheet" href="style.css">
         <script src="render.js"></script>
-        <title>L'appli de Greep owo</title>
+        <title>L'appli de Greep 🎃</title>
     </head>
-    <body class="noSelect">
+    <body>
         <form action="#">
             Text: <input type="text" name="texte" id="textInput">
             <button onclick="ipc_sendConsole()">Send to console</button>
@@ -12,9 +12,11 @@
         <br />
         <br />
         <br />
-        <form action="#">
-            Hex color: <input type="text" name="texte" id="colorInput">
-            <button onclick="changeMenubarColor()">Change Menubar Color</button>
-        </form>
+        We are using Node.js <span id="node-version"></span>,
+        Chromium <span id="chrome-version"></span>,
+        and Electron <span id="electron-version"></span>.
+        <br />
+        <br />
+        <button onclick="ok()">Broken button</button>
     </body>
 </html>

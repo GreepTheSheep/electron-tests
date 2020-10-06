@@ -1,13 +1,34 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
+const contextMenu = require('electron-context-menu');
 const path = require('path')
 require('@treverix/remote/main').initialize()
+
+const dispose = contextMenu();
+dispose();
+
+contextMenu({
+	prepend: (defaultActions, params, browserWindow) => [
+		{
+			label: '🌈 Rainbow',
+			// Only show it when right-clicking images
+			visible: params.mediaType === 'image'
+		},
+  ],
+  labels: {
+    copy: '📝 Copy',
+    paste: `📝 Paste`,
+    inspect: '👓 Inspect',
+    saveImageAs: '💾 Save img',
+    searchWithGoogle : '🔎 Search Google for “{selection}”'
+	}
+});
 
 function createWindow () {
   // Create the browser window.
     const window = new BrowserWindow({
       icon: 'build/icon.png',
       title: 'Greep',
-      frame: process.platform === 'darwin',  // the custom titlebar is useless on mac os
+      frame: process.platform == 'darwin',  // the custom titlebar is useless on mac os
       webPreferences: {
         enableRemoteModule: true,
         preload: path.join(__dirname, 'preload.js'),
@@ -23,7 +44,7 @@ function createWindow () {
 
     // and load the index.html of the app.
     window.loadFile('content/index.html')
-
+    //window.loadURL('https://music.youtube.com')
   
     if (!window.isMaximized()) window.maximize()
 

@@ -54,10 +54,18 @@ window.addEventListener('DOMContentLoaded', () => {
     }));
 
     new customTitlebar.Titlebar({
-        backgroundColor: customTitlebar.Color.fromHex('#ff0000'),
+        backgroundColor: customTitlebar.Color.fromHex('#212121'),
         icon: url.format(path.join(__dirname, '/build', '/icon.png')),
         menu
     });
-    
+  }
+
+  const replaceText = (selector, text) => {
+    const element = document.getElementById(selector)
+    if (element) element.innerText = text
+  }
+
+  for (const type of ['chrome', 'node', 'electron']) {
+    replaceText(`${type}-version`, process.versions[type])
   }
 })
