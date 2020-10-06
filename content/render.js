@@ -1,9 +1,6 @@
 const { ipcRenderer, remote } = require('electron')
 var window = remote.getCurrentWindow()
-
-// ipcRenderer.on('ipc-return', (event, arg) => {
-//     alert(arg);
-// });
+const titlebar = require('custom-electron-titlebar')
 
 function ipc(){
     var data = document.getElementById("textInput").value;

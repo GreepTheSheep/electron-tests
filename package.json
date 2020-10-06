@@ -17,15 +17,19 @@
   },
   "build": {
     "appId": "greep.example.app",
-    "productName" : "Greep tests Electron",
-    "win" : {
-      "target" : "msi"
+    "productName": "Greep tests Electron",
+    "win": {
+      "target": "msi"
     },
-    "linux" : {
-      "target" : "apk"
+    "linux": {
+      "target": "apk"
     },
-    "mac" : {
-      "target" : "dmg"
+    "mac": {
+      "target": "dmg"
     }
+  },
+  "dependencies": {
+    "@treverix/remote": "^0.1.1",
+    "custom-electron-titlebar": "^3.2.4"
   }
 }

@@ -1,0 +1,7 @@
+https://github.com/Treverix/custom-electron-titlebar
+
+https://github.com/parro-it/electron-localshortcut
+
+https://github.com/sindresorhus/electron-context-menu
+
+https://github.com/maxogden/menubar
