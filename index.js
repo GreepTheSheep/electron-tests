@@ -1,6 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
-
 require('@treverix/remote/main').initialize()
 
 function createWindow () {
@@ -13,7 +12,7 @@ function createWindow () {
         enableRemoteModule: true,
         preload: path.join(__dirname, 'preload.js'),
         nodeIntegration: true,
-      }
+      },
     })
     
 
@@ -30,23 +29,6 @@ function createWindow () {
 
   // Open the DevTools.
   //window.webContents.openDevTools()
-
-
-  ipcMain.on('log-ipc', (event, arg) => {
-    console.log(arg);
-    // event.sender.send('ipc-return', arg);
-  });
-
-  ipcMain.on('closeWindow', (event, arg) => {
-    window.close();
-  });
-  ipcMain.on('minimizeWindow', (event, arg) => {
-    window.minimize();
-  });
-  ipcMain.on('maximizeWindow', (event, arg) => {
-    if (window.isMaximized()) window.unmaximize()
-    else window.maximize()
-  });
 
 }
 
@@ -76,5 +58,7 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-
-
+ipcMain.on('log-ipc', (event, arg) => {
+  console.log(arg);
+  // event.sender.send('ipc-return', arg);
+});

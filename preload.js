@@ -44,8 +44,9 @@ window.addEventListener('DOMContentLoaded', () => {
           label: 'Subitem with submenu',
           submenu: [
             {
-              label: 'Submenu &item 2',
+              label: 'Submenu item 2',
               accelerator: 'Ctrl+T',
+              click: () => console.log('Submenu item 2 clicked')
             }
           ]
         }
@@ -53,9 +54,10 @@ window.addEventListener('DOMContentLoaded', () => {
     }));
 
     new customTitlebar.Titlebar({
-        backgroundColor: customTitlebar.Color.fromHex('#2f3241'),
+        backgroundColor: customTitlebar.Color.fromHex('#ff0000'),
         icon: url.format(path.join(__dirname, '/build', '/icon.png')),
         menu
     });
+    
   }
 })

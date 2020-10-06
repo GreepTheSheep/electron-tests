@@ -2,15 +2,19 @@
     <head>
         <link rel="stylesheet" href="style.css">
         <script src="render.js"></script>
-        <title>Greep tests lol</title>
+        <title>L'appli de Greep owo</title>
     </head>
     <body class="noSelect">
-        <!-- <div class="div1">
-            <button onclick="minimizeWindow()">_</button>
-            <button onclick="maximizeWindow()">=</button>
-            <button onclick="closeWindow()">X</button>
-        </div> -->
-        <input type="text" name="texte" id="textInput">
-        <button onclick="ipc()">Bouton IPC</button>
+        <form action="#">
+            Text: <input type="text" name="texte" id="textInput">
+            <button onclick="ipc_sendConsole()">Send to console</button>
+        </form>
+        <br />
+        <br />
+        <br />
+        <form action="#">
+            Hex color: <input type="text" name="texte" id="colorInput">
+            <button onclick="changeMenubarColor()">Change Menubar Color</button>
+        </form>
     </body>
 </html>
