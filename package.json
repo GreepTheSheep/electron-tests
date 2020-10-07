@@ -12,8 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^10.1.0",
-    "electron-builder": "^22.8.0",
-    "nexe": "3.3.7"
+    "electron-builder": "^22.8.0"
   },
   "build": {
     "appId": "greep.example.app",
