@@ -9,5 +9,7 @@ function ipc_sendConsole(){
     alert('"' + data + '" has been sent in the node console!')
 }
 function ok(){
-    titlebar.updateTitle('New Title');
+    var title = document.getElementById("titleInput").value;
+    if (!title) title = 'New Title'
+    ipcRenderer.send('update-title', title);
 }

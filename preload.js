@@ -1,17 +1,16 @@
 // All of the Node.js APIs are available in the preload process.
 // It has the same sandbox as a Chrome extension.
-
 const path = require('path');
 const url = require('url');
 const {isMacintosh} = require('custom-electron-titlebar')
-const {Menu, MenuItem} = require('@treverix/remote')
+const customTitlebar = require('@treverix/custom-electron-titlebar');
+const {Menu, MenuItem, ipcMain} = require('@treverix/remote')
 
 window.addEventListener('DOMContentLoaded', () => {
 
   // It does not make sense to use the custom titlebar on macOS where
   // it only tries to simulate what we get with the normal behavior anyway.
   if (!isMacintosh) {
-    const customTitlebar = require('custom-electron-titlebar');
 
     // add a menu
     const menu = new Menu();
@@ -69,3 +68,7 @@ window.addEventListener('DOMContentLoaded', () => {
     replaceText(`${type}-version`, process.versions[type])
   }
 })
+
+ipcMain.on('update-title', (event, arg) => {
+  customTitlebar.updateTitle(arg);
+});
